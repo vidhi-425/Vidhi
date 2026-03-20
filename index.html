@@ -10,7 +10,6 @@
       background: #0F172A;
       color: white;
       text-align: center;
-      overflow: hidden;
     }
 
     .screen {
@@ -31,10 +30,84 @@
       to {opacity: 1;}
     }
 
+    h1 {
+      max-width: 80%;
+      line-height: 1.5;
+    }
+
     button {
       padding: 12px 24px;
       margin-top: 20px;
       background: #3B82F6;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    img {
+      margin-top: 20px;
+      width: 120px;
+      animation: pop 0.8s ease;
+    }
+
+    @keyframes pop {
+      from {transform: scale(0);}
+      to {transform: scale(1);}
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div class="screen active" id="s1">
+  <h1>Hey… don’t click this 👀</h1>
+  <button onclick="next('s2')">Okay fine, click me🙄</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="s2">
+  <h1>Don’t get used to this…<br>I don’t usually say nice things 🫣</h1>
+  <button onclick="next('s3')">Continue 😏</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen" id="s3">
+  <h1>But…<br>you’re actually so much important to me.<br>And I love your presence🫠</h1>
+  <button onclick="next('s4')">Last one 👀</button>
+</div>
+
+<!-- FINAL SCREEN -->
+<div class="screen" id="s4">
+  <h1>
+    🎂 Happy Birthday mere boondi ke laddu 😋🎉<br><br>
+    I LOVE YOU SOO MUCH🫶🏼❤️<br>
+  </h1>
+
+  <!-- Cake -->
+  <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png">
+
+  <!-- Cake button -->
+  <button onclick="this.innerText='Bas itna hi cake milega 😌'">
+    cut the cake
+  </button>
+
+  <!-- Song button -->
+  <a href="https://youtu.be/6x2pG7d6a1A?t=45" target="_blank">
+    <button>listen this 😌</button>
+  </a>
+</div>
+
+<script>
+function next(id) {
+  document.querySelector('.active').classList.remove('active');
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>      background: #3B82F6;
       border: none;
       color: white;
       border-radius: 10px;
