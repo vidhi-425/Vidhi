@@ -65,8 +65,8 @@
 </audio>
 
 <div class="screen active" id="s1">
-  <h1 id="t1"></h1>
-  <button onclick="next('s2')">Okay fine, click me</button>
+  <h1>Hey… don’t click this 👀</h1>
+  <button onclick="next('s2')">Okay fine, click me 🙄</button>
 </div>
 
 <div class="screen" id="s2">
@@ -90,16 +90,24 @@
 
 <script>
 function next(id) {
-  document.querySelector('.active').classList.remove('active');
-  document.getElementById(id).classList.add('active');
+  let current = document.querySelector('.active');
+  if(current) current.classList.remove('active');
 
-  // 🎶 Start music ONLY on final screen
+  let nextScreen = document.getElementById(id);
+  if(nextScreen) nextScreen.classList.add('active');
+
+  // Play music only on last screen
   if(id === 's4') {
-  document.getElementById("music").play();
+    let music = document.getElementById("music");
+    if(music) {
+      music.play().catch(() => {});
+    }
   }
+}
 
-// ✨ Typing effect
+// Typing effect (safe version)
 function typeText(element, text, speed = 40) {
+  if(!element) return;
   let i = 0;
   function typing() {
     if (i < text.length) {
@@ -111,13 +119,14 @@ function typeText(element, text, speed = 40) {
   typing();
 }
 
-// 💬 Messages
-typeText(document.getElementById("t1"), "Hey… don’t click this 👀");
-typeText(document.getElementById("t2"), "Don’t get used to this…\nI don’t usually say nice things 😌");
-typeText(document.getElementById("t3"), "But yeah…\nyou’re actually important to me.\nDon’t make it a big deal 😒");
-typeText(document.getElementById("t4"), "🎂 Happy Birthday 🎉\n\nBas… mera banke rehna 😌\n\nStay the same idiot I like being around");
-
-</script>
+// Run after page loads
+window.onload = function() {
+  typeText(document.getElementById("t1"), "Hey… don’t click this 👀");
+  typeText(document.getElementById("t2"), "Don’t get used to this…\nI don’t usually say nice things 🫣");
+  typeText(document.getElementById("t3"), "But \nyou’re actually so much important to me.\n & I love your presence 🫶🏼");
+  typeText(document.getElementById("t4"), "🎂 Happy Birthday mere boondi ke laddu 😋🎉\n\n I LOVE YOU SOO MUCH ❤️🥰");
+};
+  </script>
 
 </body>
 </html>
