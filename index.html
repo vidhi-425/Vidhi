@@ -61,11 +61,8 @@
 
 <body>
 
-<!-- 🎶 Hidden YouTube music -->
-<iframe id="ytmusic" width="0" height="0"
-src=""
-frameborder="0"
-allow="autoplay"></iframe>
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">  
+</audio>
 
 <div class="screen active" id="s1">
   <h1 id="t1"></h1>
@@ -85,6 +82,10 @@ allow="autoplay"></iframe>
 <div class="screen" id="s4">
   <h1 id="t4"></h1>
   <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
+
+  <button onclick="this.innerText='Bas itna hi cake milega 😌'">
+    cut the cake
+  </button>
 </div>
 
 <script>
@@ -94,10 +95,8 @@ function next(id) {
 
   // 🎶 Start music ONLY on final screen
   if(id === 's4') {
-    document.getElementById("ytmusic").src =
-    "https://www.youtube.com/embed/6x2pG7d6a1A?autoplay=1&mute=0";
+  document.getElementById("music").play();
   }
-}
 
 // ✨ Typing effect
 function typeText(element, text, speed = 40) {
@@ -116,7 +115,7 @@ function typeText(element, text, speed = 40) {
 typeText(document.getElementById("t1"), "Hey… don’t click this 👀");
 typeText(document.getElementById("t2"), "Don’t get used to this…\nI don’t usually say nice things 😌");
 typeText(document.getElementById("t3"), "But yeah…\nyou’re actually important to me.\nDon’t make it a big deal 😒");
-typeText(document.getElementById("t4"), "🎂 Happy Birthday 🎉\n\nBas… mera ban ke reh 😌\n\nStay the same idiot I like being around");
+typeText(document.getElementById("t4"), "🎂 Happy Birthday 🎉\n\nBas… mera banke rehna 😌\n\nStay the same idiot I like being around");
 
 </script>
 
