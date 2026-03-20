@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0F172A;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .screen {
+      display: none;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      animation: fade 1s;
+    }
+
+    .active {
+      display: flex;
+    }
+
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    button {
+      padding: 12px 24px;
+      margin-top: 20px;
+      background: #3B82F6;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    h1 {
+      max-width: 80%;
+      line-height: 1.5;
+    }
+
+    img {
+      margin-top: 20px;
+      width: 120px;
+      animation: pop 1s ease;
+    }
+
+    @keyframes pop {
+      from {transform: scale(0);}
+      to {transform: scale(1);}
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎶 Hidden YouTube music -->
+<iframe id="ytmusic" width="0" height="0"
+src=""
+frameborder="0"
+allow="autoplay"></iframe>
+
+<div class="screen active" id="s1">
+  <h1 id="t1"></h1>
+  <button onclick="next('s2')">Okay fine, click me</button>
+</div>
+
+<div class="screen" id="s2">
+  <h1 id="t2"></h1>
+  <button onclick="next('s3')">Continue 😏</button>
+</div>
+
+<div class="screen" id="s3">
+  <h1 id="t3"></h1>
+  <button onclick="next('s4')">Last one 👀</button>
+</div>
+
+<div class="screen" id="s4">
+  <h1 id="t4"></h1>
+  <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
+</div>
+
+<script>
+function next(id) {
+  document.querySelector('.active').classList.remove('active');
+  document.getElementById(id).classList.add('active');
+
+  // 🎶 Start music ONLY on final screen
+  if(id === 's4') {
+    document.getElementById("ytmusic").src =
+    "https://www.youtube.com/embed/6x2pG7d6a1A?autoplay=1&mute=0";
+  }
+}
+
+// ✨ Typing effect
+function typeText(element, text, speed = 40) {
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+// 💬 Messages
+typeText(document.getElementById("t1"), "Hey… don’t click this 👀");
+typeText(document.getElementById("t2"), "Don’t get used to this…\nI don’t usually say nice things 😌");
+typeText(document.getElementById("t3"), "But yeah…\nyou’re actually important to me.\nDon’t make it a big deal 😒");
+typeText(document.getElementById("t4"), "🎂 Happy Birthday 🎉\n\nBas… mera ban ke reh 😌\n\nStay the same idiot I like being around");
+
+</script>
+
+</body>
+</html>
