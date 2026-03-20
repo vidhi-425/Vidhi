@@ -49,8 +49,8 @@
 <body>
 
 <!-- 🎶 MUSIC -->
-<audio id="music">
-  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_02_-_Friends.mp3" type="audio/mp3">
+<audio id="music" controls>
+  <source src="content://media/external/downloads/1000050979" type="audio/aac">
 </audio>
 
 <!-- SCREEN 1 -->
@@ -92,11 +92,11 @@ function next(id) {
 
   if(id === 's4') {
     let music = document.getElementById("music");
-    music.volume = 0.4;
-    music.play();
+    music.play().catch(() => {
+      console.log("Autoplay blocked");
+    });
   }
 }
-</script>
-
+    </script>
 </body>
 </html>
