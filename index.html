@@ -6,7 +6,7 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       background: #0F172A;
       color: white;
       text-align: center;
@@ -18,21 +18,16 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      animation: fade 1s;
     }
 
     .active {
       display: flex;
+      animation: fade 1s;
     }
 
     @keyframes fade {
       from {opacity: 0;}
       to {opacity: 1;}
-    }
-
-    h1 {
-      max-width: 80%;
-      line-height: 1.5;
     }
 
     button {
@@ -42,23 +37,21 @@
       border: none;
       color: white;
       border-radius: 10px;
-      font-size: 16px;
     }
 
     img {
+      width: 180px;
       margin-top: 20px;
-      width: 120px;
-      animation: pop 0.8s ease;
-    }
-
-    @keyframes pop {
-      from {transform: scale(0);}
-      to {transform: scale(1);}
     }
   </style>
 </head>
 
 <body>
+
+<!-- 🎶 MUSIC -->
+<audio id="music">
+  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_02_-_Friends.mp3" type="audio/mp3">
+</audio>
 
 <!-- SCREEN 1 -->
 <div class="screen active" id="s1">
@@ -74,132 +67,36 @@
 
 <!-- SCREEN 3 -->
 <div class="screen" id="s3">
-  <h1>But…<br>you’re actually so much important to me.<br>And I love your presence🫠</h1>
+  <h1>But …<br>you’re actually so much important to me.<br>& I love your presence🫠</h1>
   <button onclick="next('s4')">Last one 👀</button>
 </div>
 
 <!-- FINAL SCREEN -->
 <div class="screen" id="s4">
   <h1>
-    🎂 Happy Birthday mere boondi ke laddu 😋🎉<br><br>
-    I LOVE YOU SOO MUCH🫶🏼❤️<br>
+    🎂 Happy Birthday 🎉<br><br>
+    I LOVE YOU SOO MUCH 🫶🏼❤️<br>  
   </h1>
 
-  <!-- Cake -->
-  <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Birthday_cake_2.jpg/320px-Birthday_cake_2.jpg">
 
-  <!-- Cake button -->
   <button onclick="this.innerText='Bas itna hi cake milega 😌'">
     cut the cake
   </button>
-
-  <!-- Song button -->
-  <a href="https://youtu.be/6x2pG7d6a1A?t=45" target="_blank">
-    <button>listen this 😌</button>
-  </a>
 </div>
 
 <script>
 function next(id) {
   document.querySelector('.active').classList.remove('active');
   document.getElementById(id).classList.add('active');
-}
-</script>
 
-</body>
-</html>      background: #3B82F6;
-      border: none;
-      color: white;
-      border-radius: 10px;
-      font-size: 16px;
-    }
-
-    h1 {
-      max-width: 80%;
-      line-height: 1.5;
-    }
-
-    img {
-      margin-top: 20px;
-      width: 120px;
-      animation: pop 1s ease;
-    }
-
-    @keyframes pop {
-      from {transform: scale(0);}
-      to {transform: scale(1);}
-    }
-  </style>
-</head>
-
-<body>
-
-<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">  
-</audio>
-
-<div class="screen active" id="s1">
-  <h1>Hey… don’t click this 👀</h1>
-  <button onclick="next('s2')">Okay fine, click me 🙄</button>
-</div>
-
-<div class="screen" id="s2">
-  <h1 id="t2"></h1>
-  <button onclick="next('s3')">Continue 😏</button>
-</div>
-
-<div class="screen" id="s3">
-  <h1 id="t3"></h1>
-  <button onclick="next('s4')">Last one 👀</button>
-</div>
-
-<div class="screen" id="s4">
-  <h1 id="t4"></h1>
-  <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
-
-  <button onclick="this.innerText='Bas itna hi cake milega 😌'">
-    cut the cake
-  </button>
-</div>
-
-<script>
-function next(id) {
-  let current = document.querySelector('.active');
-  if(current) current.classList.remove('active');
-
-  let nextScreen = document.getElementById(id);
-  if(nextScreen) nextScreen.classList.add('active');
-
-  // Play music only on last screen
   if(id === 's4') {
     let music = document.getElementById("music");
-    if(music) {
-      music.play().catch(() => {});
-    }
+    music.volume = 0.4;
+    music.play();
   }
 }
-
-// Typing effect (safe version)
-function typeText(element, text, speed = 40) {
-  if(!element) return;
-  let i = 0;
-  function typing() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, speed);
-    }
-  }
-  typing();
-}
-
-// Run after page loads
-window.onload = function() {
-  typeText(document.getElementById("t1"), "Hey… don’t click this 👀");
-  typeText(document.getElementById("t2"), "Don’t get used to this…\nI don’t usually say nice things 🫣");
-  typeText(document.getElementById("t3"), "But \nyou’re actually so much important to me.\n & I love your presence 🫶🏼");
-  typeText(document.getElementById("t4"), "🎂 Happy Birthday mere boondi ke laddu 😋🎉\n\n I LOVE YOU SOO MUCH ❤️🥰");
-};
-  </script>
+</script>
 
 </body>
 </html>
